@@ -7,13 +7,20 @@ public class Department
 {
     private List<Employee> employees = new List<Employee>();
 
-    // Метод для добавления сотрудника в отдел
+    //  метод для добавления сотрудника в отдел
     public void AddEmployee(Employee employee)
     {
-        if (employee == null)
-            throw new ArgumentNullException(nameof(employee), "Employee cannot be null.");
+        try
+        {
+            if (employee == null)
+                throw new ArgumentNullException(nameof(employee), "Employee cannot be null.");
 
-        employees.Add(employee);
+            employees.Add(employee);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при добавлении сотрудника: {ex.Message}");
+        }
     }
 
     // Метод для вывода списка сотрудников в отделе
@@ -54,4 +61,5 @@ public class Department
     }
 
     // Другие методы для управления списком сотрудников в отделе
+
 }

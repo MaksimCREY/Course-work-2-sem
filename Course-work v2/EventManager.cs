@@ -24,4 +24,16 @@ public class EventManager
         // Вызываем событие, сообщая об изменении списка сотрудников
         OnEmployeeListChanged(EventArgs.Empty);
     }
+
+    // Метод для подписки на событие изменения списка сотрудников
+    public void SubscribeToEmployeeListChanged(Action<object, EventArgs> subscriber)
+    {
+        EmployeeListChanged += new EmployeeListChangedEventHandler(subscriber);
+    }
+
+    // Метод для отписки от события изменения списка сотрудников
+    public void UnsubscribeFromEmployeeListChanged(Action<object, EventArgs> subscriber)
+    {
+        EmployeeListChanged -= new EmployeeListChangedEventHandler(subscriber);
+    }
 }
